@@ -8,7 +8,7 @@ declare global {
 }
 
 export interface User {
-  id: number;
+  id?: number;
   email: string;
   password: string;
   name: string;
@@ -20,11 +20,12 @@ export interface Payload {
 }
 
 export interface IBook {
-  id: number;
+  id?: number;
   categoryid: number;
   title: string;
   author: string;
   price: number;
+  name?: string;
 }
 
 export interface ICategory {

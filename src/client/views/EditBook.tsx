@@ -2,7 +2,7 @@ import * as React from "react";
 import { useState, useEffect } from "react";
 import { apiService } from "../services/apiService";
 import { IBook } from "../../server/types";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { ICategory } from "../../server/types";
 
 const Edit = () => {
@@ -12,6 +12,7 @@ const Edit = () => {
   const [Categories, setCategories] = useState<ICategory[]>([]);
   const [selectedCategoryByid, setSelectedCategoryByid] = useState(0);
   const { id } = useParams();
+  const nav = useNavigate();
 
   useEffect(() => {
     apiService(`/api/Books/${id}`)
@@ -34,12 +35,14 @@ const Edit = () => {
     apiService(`/api/Books/${id}`, `PUT`, { title, author, price, categoryid: selectedCategoryByid })
       .then((data) => console.log(data))
       .catch((error) => console.log(error));
+    nav("/Books");
   };
 
   const DeleteBook = () => {
     apiService(`/api/Books/${id}`, "Delete")
       .then((data) => console.log(data))
       .catch((error) => console.log(error));
+    nav("/Books");
   };
 
   return (

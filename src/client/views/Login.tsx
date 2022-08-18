@@ -1,12 +1,15 @@
 import * as React from "react";
 import { useState } from "react";
 import { apiService } from "../services/apiService";
+import { useNavigate } from "react-router-dom";
 
 const pizza = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [yaLoggingInSon, setYaLoggingInSon] = useState(true);
+
+  const nav = useNavigate();
 
   const UserLogin = () => {
     const data = { name, email, password };
@@ -15,6 +18,8 @@ const pizza = () => {
         localStorage.setItem("token", data.token);
       })
       .catch((error) => console.log(error));
+
+    nav(`/Books`);
   };
 
   return (

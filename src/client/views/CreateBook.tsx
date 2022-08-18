@@ -2,6 +2,7 @@ import * as React from "react";
 import { useState, useEffect } from "react";
 import { apiService } from "../services/apiService";
 import { ICategory } from "../../server/types";
+import { useNavigate } from "react-router-dom";
 
 const CreateBook = () => {
   const [title, setTitle] = useState("");
@@ -9,6 +10,7 @@ const CreateBook = () => {
   const [price, setPrice] = useState(0);
   const [Categories, setCategories] = useState<ICategory[]>([]);
   const [CategoryByid, setCategoryByid] = useState(0);
+  const nav = useNavigate();
 
   useEffect(() => {
     apiService(`/api/Categories`)
@@ -22,6 +24,8 @@ const CreateBook = () => {
     apiService(`/api/Books`, `POST`, { title, author, price, categoryid: CategoryByid })
       .then((data) => console.log(data))
       .catch((error) => console.log(error));
+
+    nav("/Books");
   };
 
   return (

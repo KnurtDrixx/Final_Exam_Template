@@ -21,7 +21,7 @@ const Books = () => {
           <Link to={`/Books/${book.id}`}>
             <h1>{book.title}</h1>
             <div>{book.author}</div>
-            <div>{book.price}</div>
+            <div>${book.price}</div>
             <div>{book.name}</div>
           </Link>
         ))}

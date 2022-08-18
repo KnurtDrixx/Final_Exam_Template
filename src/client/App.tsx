@@ -17,6 +17,7 @@ const App = (props: AppProps) => {
             <div>
               <h1>Welcome to Silent Library... Shhhh</h1>
               <Link to="/Books">Enter</Link>
+              <Link to="/Login">Login</Link>
             </div>
           }
         />

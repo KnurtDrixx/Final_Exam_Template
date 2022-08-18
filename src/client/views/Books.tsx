@@ -19,7 +19,7 @@ const Books = () => {
         <h1>Look at these stupid books!</h1>
         {books.map((book) => (
           <Link to={`/Books/${book.id}`}>
-            <div>{book.title}</div>
+            <h1>{book.title}</h1>
             <div>{book.author}</div>
             <div>{book.price}</div>
             <div>{book.name}</div>
